@@ -1,9 +1,11 @@
 <script setup>
 import ExampleSvg from '~/assets/images/example1.svg'
 
-// const exampleSvgRequired = require('~/assets/images/example1.svg')
-const imageName = 'example1.svg'
-// const exampleSvgDynamicRequired = require(`~/assets/images/${imageName}`)
+const imageName = 'example1'
+const dynamicPathSvg = new URL(
+  `./assets/images/${imageName}.svg`,
+  import.meta.url
+).href
 </script>
 
 <template>
@@ -29,15 +31,16 @@ const imageName = 'example1.svg'
     <!-- <img width="200" :src="exampleSvgRequired" /> -->
     <p>500 エラー</p>
 
-    <h2>SVG ファイルを require したとき（動的）</h2>
+    <h2>動的パスの SVG</h2>
     <p>
-      const imageName = 'example1.svg'<br />
-      const exampleSvgDynamicRequired = require(`~/assets/images/${imageName}`)<br />
+      const imageName = 'example1'<br />
+      const dynamicPathSvg = new URL(`./assets/images/${imageName}.svg`,
+      import.meta.url).href<br />
       <br />
-      &lt;img :src="exampleSvgDynamicRequired" /&gt;
+      &lt;img :src="dynamicPathSvg" /&gt;
     </p>
-    <!-- <img width="200" :src="exampleSvgDynamicRequired" /> -->
-    <p>500 エラー</p>
+    <p>dynamicPathSvg: {{ dynamicPathSvg }}</p>
+    <img width="200" :src="dynamicPathSvg" />
 
     <h2>CSS の background-image の url に文字列パスを指定したとき</h2>
     <p>CSS）background-image: url("~/assets/images/example1.svg");</p>
@@ -49,7 +52,9 @@ const imageName = 'example1.svg'
       <br />
       &lt;div :style="`background-image: url(${ExampleSvg}});`"&gt;&lt;/div&gt;
     </p>
-    <div :style="`width: 200px; height: 200px; background-image: url(${ExampleSvg});`"></div>
+    <div
+      :style="`width: 200px; height: 200px; background-image: url(${ExampleSvg});`"
+    ></div>
   </div>
 </template>
 
