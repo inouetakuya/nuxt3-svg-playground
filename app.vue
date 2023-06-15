@@ -1,5 +1,5 @@
 <script setup>
-import ExampleSvg from '~/assets/images/example1.svg'
+import ExampleSvg from '~/assets/images/example1.svg?url'
 
 const imageName = 'example1'
 const dynamicPathSvg = await import(`./assets/images/${imageName}.svg?component`)
@@ -8,12 +8,12 @@ const dynamicPathSvg = await import(`./assets/images/${imageName}.svg?component`
 <template>
   <div>
     <h2>img 要素の src に文字列パスを指定したとき</h2>
-    <p>&lt;img src="~/assets/images/example1.svg" /&gt;</p>
-    <img width="200" src="~/assets/images/example1.svg" />
+    <p>&lt;img src="~/assets/images/example1.svg?url" /&gt;</p>
+    <img width="200" src="~/assets/images/example1.svg?url" />
 
     <h2>SVG ファイルを import したとき</h2>
     <p>
-      import ExampleSvg from '~/assets/images/example1.svg'<br />
+      import ExampleSvg from '~/assets/images/example1.svg?url'<br />
       <br />
       &lt;img :src="ExampleSvg" /&gt;
     </p>
@@ -36,7 +36,7 @@ const dynamicPathSvg = await import(`./assets/images/${imageName}.svg?component`
 
     <h2>style 属性で background-image の url を指定したとき</h2>
     <p>
-      import ExampleSvg from '~/assets/images/example1.svg'<br />
+      import ExampleSvg from '~/assets/images/example1.svg?url'<br />
       <br />
       &lt;div :style="`background-image: url(${ExampleSvg}});`"&gt;&lt;/div&gt;
     </p>
