@@ -19,15 +19,6 @@ const dynamicPathSvg = await import(`./assets/images/${imageName}.svg`)
     </p>
     <img width="200" :src="ExampleSvg" />
 
-    <h2>SVG ファイルを require したとき（静的）</h2>
-    <p>
-      const exampleSvgRequired = require('~/assets/images/example1.svg')
-      <br />
-      &lt;img :src="exampleSvgRequired" /&gt;
-    </p>
-    <!-- <img width="200" :src="exampleSvgRequired" /> -->
-    <p>500 エラー</p>
-
     <h2>動的パスの SVG</h2>
     <p>
       const imageName = 'example1'<br />
