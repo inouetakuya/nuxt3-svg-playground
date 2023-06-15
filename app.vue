@@ -2,10 +2,7 @@
 import ExampleSvg from '~/assets/images/example1.svg'
 
 const imageName = 'example1'
-const dynamicPathSvg = new URL(
-  `./assets/images/${imageName}.svg`,
-  import.meta.url
-).href
+const dynamicPathSvg = await import(`./assets/images/${imageName}.svg`)
 </script>
 
 <template>
@@ -34,13 +31,12 @@ const dynamicPathSvg = new URL(
     <h2>動的パスの SVG</h2>
     <p>
       const imageName = 'example1'<br />
-      const dynamicPathSvg = new URL(`./assets/images/${imageName}.svg`,
-      import.meta.url).href<br />
+      const dynamicPathSvg = await import(`./assets/images/${imageName}.svg`)
       <br />
-      &lt;img :src="dynamicPathSvg" /&gt;
+      &lt;component :is="dynamicPathSvg" /&gt;
     </p>
-    <p>dynamicPathSvg: {{ dynamicPathSvg }}</p>
-    <img width="200" :src="dynamicPathSvg" />
+    <!-- <p>dynamicPathSvg: {{ dynamicPathSvg }}</p> -->
+    <component :is="dynamicPathSvg" />
 
     <h2>CSS の background-image の url に文字列パスを指定したとき</h2>
     <p>CSS）background-image: url("~/assets/images/example1.svg");</p>
