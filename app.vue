@@ -1,8 +1,8 @@
 <script setup>
 import ExampleSvg from '~/assets/images/example1.svg'
 
-const imageName = 'example1.svg'
-const dynamicPathSvg = await import(`./assets/images/${imageName}?component`)
+const imageName = 'example1'
+const dynamicPathSvg = await import(`./assets/images/${imageName}.svg?component`)
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const dynamicPathSvg = await import(`./assets/images/${imageName}?component`)
     <h2>動的パスの SVG</h2>
     <p>
       const imageName = 'example1.svg'<br />
-      const dynamicPathSvg = await import(`./assets/images/${imageName}?component`)<br />
+      const dynamicPathSvg = await import(`./assets/images/${imageName}.svg?component`)<br />
       <br />
       &lt;component :is="dynamicPathSvg" /&gt;
     </p>
